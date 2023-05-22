@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
-import 'package:wear_agains/app/viewer/carousel.dart';
-import 'package:wear_agains/const/color.dart';
-import 'package:wear_agains/const/data_builder.dart';
-import 'package:wear_agains/const/image.dart';
+
+import '../../const/screens.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,7 +13,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   TextEditingController searchController = TextEditingController();
-  ScrollController _scrollBottomBarController = new ScrollController();
+  final ScrollController _scrollBottomBarController = ScrollController();
 
   bool isScrollingDown = false;
   bool _show = true;
@@ -75,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 alignment: Alignment.center,
                 height: Get.height / 2.5,
                 child: const CarouselScreen()),
-            const SizedBox(height: 10),
+            SizedBoxHeight.tenSizedBox,
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Row(
@@ -103,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-            const SizedBox(height: 10),
+            SizedBoxHeight.tenSizedBox,
             SizedBox(
               height: Get.height / 5,
               child: ListView.builder(
@@ -128,7 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
               ),
             ),
-            const SizedBox(height: 20),
+            SizedBoxHeight.twentySizedBox,
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Row(
@@ -156,7 +154,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-            const SizedBox(height: 10),
+            SizedBoxHeight.tenSizedBox,
             SizedBox(
               height: Get.height / 5,
               child: ListView.builder(
@@ -184,7 +182,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: Container(
+      bottomNavigationBar: SizedBox(
           height: bottomBarHeight,
           width: MediaQuery.of(context).size.width,
           child: _show
@@ -235,7 +233,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Row(
                     children: [
                       Image.asset(Assets.wearagainsnotification),
-                      const SizedBox(width: 10),
+                      SizedBoxWidth.tenSizedBox,
                       Image.asset(Assets.wearagainscart)
                     ],
                   ),
@@ -244,12 +242,12 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ],
         ),
-        const SizedBox(height: 20),
+        SizedBoxHeight.twentySizedBox,
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
           child: _buildSearch(),
         ),
-        const SizedBox(height: 20)
+        SizedBoxHeight.twentySizedBox,
       ]),
     );
   }

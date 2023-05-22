@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 
-import 'package:wear_agains/const/color.dart';
-import 'package:wear_agains/const/data_builder.dart';
+import '../../const/screens.dart';
+import '../../const/data_builder.dart';
 
 class CarouselScreen extends StatefulWidget {
   const CarouselScreen({super.key});

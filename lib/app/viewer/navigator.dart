@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:wear_agains/app/viewer/chat.dart';
-import 'package:wear_agains/app/viewer/home.dart';
-import 'package:wear_agains/app/viewer/profile.dart';
-import 'package:wear_agains/const/color.dart';
-import 'package:wear_agains/const/image.dart';
-import 'package:wear_agains/const/scroll_to_hide.dart';
+import '../../app/viewer/chat.dart';
+import '../../app/viewer/home.dart';
+import '../../app/viewer/profile.dart';
+import '../../const/screens.dart';
+import '../../const/scroll_to_hide.dart';
 
 class NavigatorScreen extends StatefulWidget {
   const NavigatorScreen({super.key});
