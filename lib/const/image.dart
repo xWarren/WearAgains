@@ -22,7 +22,6 @@ class Assets {
   static String tshirtsGiordano = "${tshirtsPath}wearagains-giordano.png";
 
   static String navigationsHome = "${navigationPath}wearagains-home.png";
-  static String navigationsMyOrders =
-      "${navigationPath}wearagains-myorders.png";
+  static String navigationsChat = "${navigationPath}wearagains-chat.png";
   static String navigationsProfile = "${navigationPath}wearagains-profile.png";
 }

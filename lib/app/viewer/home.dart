@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:wear_agains/app/viewer/carousel.dart';
 import 'package:wear_agains/const/color.dart';
@@ -14,97 +15,60 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   TextEditingController searchController = TextEditingController();
-  int _currentIndex = 1;
-// Define your navigation items
-  final List<BottomNavigationBarItem> _navigationItems = [
-    BottomNavigationBarItem(
-      icon: Image.asset(Assets.navigationsMyOrders),
-      label: 'My Orders',
-    ),
-    BottomNavigationBarItem(
-      icon: Container(
-          width: 50,
-          decoration: ShapeDecoration(
-              shape: RoundedRectangleBorder(
-                  side:
-                      const BorderSide(color: ColorPalette.formFieldSideColor),
-                  borderRadius: BorderRadius.circular(30))),
-          child: Image.asset(Assets.navigationsHome)),
-      label: 'Home',
-    ),
-    BottomNavigationBarItem(
-      icon: Image.asset(Assets.navigationsProfile),
-      label: 'Profile',
-    ),
-  ];
-  // Handle navigation item tap
-  void _onNavigationTapped(int index) {
+  ScrollController _scrollBottomBarController = new ScrollController();
+
+  bool isScrollingDown = false;
+  bool _show = true;
+  double bottomBarHeight = 75;
+  @override
+  void initState() {
+    super.initState();
+    myScroll();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _scrollBottomBarController.removeListener(() {});
+  }
+
+  void showBottomBar() {
     setState(() {
-      _currentIndex = index;
+      _show = true;
+    });
+  }
+
+  void hideBottomBar() {
+    setState(() {
+      _show = false;
+    });
+  }
+
+  void myScroll() async {
+    _scrollBottomBarController.addListener(() {
+      if (_scrollBottomBarController.position.userScrollDirection ==
+          ScrollDirection.reverse) {
+        if (!isScrollingDown) {
+          isScrollingDown = true;
+          hideBottomBar();
+        }
+      }
+      if (_scrollBottomBarController.position.userScrollDirection ==
+          ScrollDirection.forward) {
+        if (isScrollingDown) {
+          isScrollingDown = false;
+          showBottomBar();
+        }
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          backgroundColor: ColorPalette.elevatedButtonColor,
-          automaticallyImplyLeading: false,
-          shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(30),
-                  bottomRight: Radius.circular(30))),
-          bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(150),
-            child: Column(children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const SizedBox(width: 80),
-                  Image.asset(Assets.wearagainshomelogo),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30),
-                    child: Stack(
-                      children: [
-                        Row(
-                          children: [
-                            Image.asset(Assets.wearagainsnotification),
-                            const SizedBox(width: 10),
-                            Image.asset(Assets.wearagainscart)
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30),
-                child: TextFormField(
-                  controller: searchController,
-                  decoration: InputDecoration(
-                    fillColor: ColorPalette.formFieldColor,
-                    filled: true,
-                    hintText: "What are you looking for?",
-                    prefixIcon: const Icon(Icons.search),
-                    border: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                          color: ColorPalette.formFieldSideColor),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                          color: ColorPalette.formFieldSideColor),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20)
-            ]),
-          )),
+      appBar: _buildAppBar(),
       body: SingleChildScrollView(
+        controller: _scrollBottomBarController,
         child: Column(
           children: [
             Container(
@@ -220,17 +184,91 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(30),
-          child: BottomNavigationBar(
-            backgroundColor: ColorPalette.formFieldColor,
-            elevation: 0,
-            currentIndex: _currentIndex,
-            onTap: _onNavigationTapped,
-            items: _navigationItems,
-          ),
+      bottomNavigationBar: Container(
+          height: bottomBarHeight,
+          width: MediaQuery.of(context).size.width,
+          child: _show
+              ? BottomNavigationBar(
+                  backgroundColor: ColorPalette.formFieldColor,
+                  unselectedItemColor: Colors.grey,
+                  selectedItemColor: ColorPalette.elevatedButtonColor,
+                  items: [
+                    BottomNavigationBarItem(
+                        icon: Image.asset(Assets.navigationsHome),
+                        label: "Home"),
+                    BottomNavigationBarItem(
+                        icon: Image.asset(Assets.navigationsChat),
+                        label: "Chat"),
+                    BottomNavigationBarItem(
+                        icon: Image.asset(Assets.navigationsProfile),
+                        label: "Profile"),
+                  ],
+                )
+              : null),
+    );
+  }
+
+  AppBar _buildAppBar() {
+    return AppBar(
+        backgroundColor: ColorPalette.elevatedButtonColor,
+        automaticallyImplyLeading: false,
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(30),
+                bottomRight: Radius.circular(30))),
+        bottom: _buildAppBarBottom());
+  }
+
+  PreferredSize _buildAppBarBottom() {
+    return PreferredSize(
+      preferredSize: const Size.fromHeight(150),
+      child: Column(children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const SizedBox(width: 80),
+            Image.asset(Assets.wearagainshomelogo),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child: Stack(
+                children: [
+                  Row(
+                    children: [
+                      Image.asset(Assets.wearagainsnotification),
+                      const SizedBox(width: 10),
+                      Image.asset(Assets.wearagainscart)
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 20),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30),
+          child: _buildSearch(),
+        ),
+        const SizedBox(height: 20)
+      ]),
+    );
+  }
+
+  TextFormField _buildSearch() {
+    return TextFormField(
+      controller: searchController,
+      decoration: InputDecoration(
+        fillColor: ColorPalette.formFieldColor,
+        filled: true,
+        hintText: "What are you looking for?",
+        prefixIcon: const Icon(Icons.search),
+        border: OutlineInputBorder(
+          borderSide: const BorderSide(color: ColorPalette.formFieldSideColor),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: const BorderSide(color: ColorPalette.formFieldSideColor),
+          borderRadius: BorderRadius.circular(10),
         ),
       ),
     );
