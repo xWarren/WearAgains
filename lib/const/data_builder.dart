@@ -3,24 +3,29 @@ import 'package:wear_agains/const/image.dart';
 class ShoesData {
   final String shoesImage;
   final String shoesName;
+  final String viewImage;
   final String sizeText;
   final String conditionText;
   final String authenticity;
   final double priceText;
+  bool isSelected;
 
   ShoesData(
       {required this.shoesImage,
       required this.shoesName,
+      required this.viewImage,
       required this.sizeText,
       required this.conditionText,
       required this.authenticity,
-      required this.priceText});
+      required this.priceText,
+      this.isSelected = false});
 }
 
 List<ShoesData> shoes = [
   ShoesData(
       shoesImage: Assets.shoesConverse,
       shoesName: "Nike X Converse Classic",
+      viewImage: Assets.converseCrop,
       sizeText: "EUR42",
       conditionText: "8/10",
       authenticity: "Authenticity not guaranteed",
@@ -28,6 +33,7 @@ List<ShoesData> shoes = [
   ShoesData(
       shoesImage: Assets.shoesZoom,
       shoesName: "Nike Zoom 2k Trainers",
+      viewImage: Assets.zoomCrop,
       sizeText: "EUR45",
       conditionText: "9/10",
       authenticity: "Authenticity not guaranteed",
@@ -35,6 +41,7 @@ List<ShoesData> shoes = [
   ShoesData(
       shoesImage: Assets.shoesYeezy,
       shoesName: "Yeezy 700",
+      viewImage: Assets.yeezyCrop,
       sizeText: "EUR42",
       conditionText: "8/10",
       authenticity: "Authenticity not guaranteed",

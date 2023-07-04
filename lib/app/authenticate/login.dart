@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:wear_agains/const/color.dart';
-import 'package:wear_agains/const/image.dart';
-import 'package:wear_agains/const/routes.dart';
-import 'package:wear_agains/const/sizedbox.dart';
-import 'package:wear_agains/const/text.dart';
+
+import '../../const/screens.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -36,22 +33,23 @@ class _LoginScreenState extends State<LoginScreen> {
           _buildForgotPasswordText(),
           SizedBoxHeight.fiftySizedBox,
           _buildLoginButton(),
+          SizedBoxHeight.twentySizedBox,
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextData.haveAccountText,
+                SizedBoxWidth.fiveSizedBox,
+                GestureDetector(
+                    onTap: () {
+                      Get.toNamed(Routes.registerScreen);
+                    },
+                    child: TextData.registerText)
+              ],
+            ),
+          )
         ]),
-      ),
-      bottomSheet: _buildBottomSheet(),
-    );
-  }
-
-  Padding _buildBottomSheet() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          TextData.haveAccountText,
-          SizedBoxWidth.fiveSizedBox,
-          TextData.registerText
-        ],
       ),
     );
   }
@@ -62,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
       height: Get.height / 15,
       child: ElevatedButton(
           onPressed: () {
-            Get.toNamed(Routes.homeScreen);
+            Get.toNamed(Routes.navScreen);
           },
           style: ElevatedButton.styleFrom(
               backgroundColor: ColorPalette.elevatedButtonColor,
@@ -87,6 +85,8 @@ class _LoginScreenState extends State<LoginScreen> {
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: TextFormField(
         controller: passwordController,
+        keyboardType: TextInputType.visiblePassword,
+        textInputAction: TextInputAction.done,
         obscureText: obscureText,
         decoration: InputDecoration(
             fillColor: ColorPalette.formFieldColor,
@@ -128,6 +128,8 @@ class _LoginScreenState extends State<LoginScreen> {
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: TextFormField(
         controller: emailController,
+        keyboardType: TextInputType.emailAddress,
+        textInputAction: TextInputAction.next,
         decoration: InputDecoration(
           fillColor: ColorPalette.formFieldColor,
           filled: true,

@@ -2,18 +2,23 @@ import 'package:flutter/material.dart';
 import '../../const/screens.dart';
 
 class TextStyleData {
-  static TextStyle haveAccountStyle =
-      const TextStyle(fontSize: 12, fontWeight: FontWeight.w600);
-  static TextStyle registerStyle = const TextStyle(
+  //App Bar
+  static const TextStyle appBarTitle =
+      TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: Colors.black);
+
+  //Login
+  static const TextStyle haveAccountStyle =
+      TextStyle(fontSize: 12, fontWeight: FontWeight.w600);
+  static const TextStyle registerStyle = TextStyle(
       fontSize: 12,
       fontWeight: FontWeight.w600,
       color: ColorPalette.textButtonColor);
-  static TextStyle loginStyle =
-      const TextStyle(fontSize: 25, fontWeight: FontWeight.w600);
-  static TextStyle forgotStyle = const TextStyle(
+  static const TextStyle loginStyle =
+      TextStyle(fontSize: 25, fontWeight: FontWeight.w600);
+  static const TextStyle forgotStyle = TextStyle(
       fontSize: 12,
       fontWeight: FontWeight.w600,
       color: ColorPalette.textButtonColor);
-  static TextStyle welcomeStyle =
-      const TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
+  static const TextStyle welcomeStyle =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
 }

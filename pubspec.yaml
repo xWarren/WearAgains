@@ -38,6 +38,8 @@ dependencies:
   animated_splash_screen: ^1.3.0
   get: ^4.6.5
   hideable_bottom_bar: ^0.0.1
+  pinput: ^2.2.31
+  iconly: ^1.0.1
   
 
 dev_dependencies:
@@ -68,6 +70,7 @@ flutter:
     - assets/tshirts/
     - assets/jackets/
     - assets/navigation/
+    - assets/register/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

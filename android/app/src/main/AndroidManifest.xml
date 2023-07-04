@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.wear_agains">
    <application
-        android:label="wear_agains"
+        android:label="WearAgains"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
