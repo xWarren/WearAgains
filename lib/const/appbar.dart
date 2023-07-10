@@ -21,4 +21,10 @@ class AppBarWidget {
     title: const Text("Edit Profile", style: TextStyleData.appBarTitle),
     iconTheme: const IconThemeData(color: Colors.black),
   );
+  static AppBar shoes = AppBar(
+    elevation: 0,
+    backgroundColor: ColorPalette.backgroundColor,
+    title: const Text("Shoes", style: TextStyleData.appBarTitle),
+    iconTheme: const IconThemeData(color: Colors.black),
+  );
 }

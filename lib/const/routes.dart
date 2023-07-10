@@ -3,6 +3,8 @@ import 'package:wear_agains/app/authenticate/login.dart';
 import 'package:wear_agains/app/authenticate/register.dart';
 import 'package:wear_agains/app/authenticate/register_contact_number.dart';
 import 'package:wear_agains/app/authenticate/register_otp.dart';
+import 'package:wear_agains/app/items/shoes_description.dart';
+import 'package:wear_agains/app/products/shoes_view.dart';
 import 'package:wear_agains/app/viewer/navigator.dart';
 import 'package:wear_agains/profile/edit_profile.dart';
 
@@ -14,6 +16,7 @@ class Routes {
   static String registerContactNumberScreen = '/registerContactNumber';
   static String registerOTP = '/otp';
   static String editProfile = '/editProfile';
+  static String shoesScreen = '/shoes';
 }
 
 final getPages = [
@@ -37,5 +40,9 @@ final getPages = [
   GetPage(
     name: Routes.editProfile,
     page: () => const EditProfileScreen(),
+  ),
+  GetPage(
+    name: Routes.shoesScreen,
+    page: () => const ShoesViewAllScreen(),
   ),
 ];

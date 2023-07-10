@@ -43,12 +43,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Row(
                     children: [
-                      const Text(
-                        "SEE ALL",
-                        style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w400,
-                            color: ColorPalette.textButtonColor),
+                      GestureDetector(
+                        onTap: () {
+                          Get.toNamed(Routes.shoesScreen);
+                        },
+                        child: const Text(
+                          "SEE ALL",
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400,
+                              color: ColorPalette.textButtonColor),
+                        ),
                       ),
                       Image.asset(Assets.caretRight)
                     ],
