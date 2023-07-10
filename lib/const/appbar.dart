@@ -15,4 +15,10 @@ class AppBarWidget {
     title: const Text("OTP", style: TextStyleData.appBarTitle),
     iconTheme: const IconThemeData(color: Colors.black),
   );
+  static AppBar editProfile = AppBar(
+    elevation: 0,
+    backgroundColor: ColorPalette.backgroundColor,
+    title: const Text("Edit Profile", style: TextStyleData.appBarTitle),
+    iconTheme: const IconThemeData(color: Colors.black),
+  );
 }

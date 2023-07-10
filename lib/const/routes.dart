@@ -3,8 +3,8 @@ import 'package:wear_agains/app/authenticate/login.dart';
 import 'package:wear_agains/app/authenticate/register.dart';
 import 'package:wear_agains/app/authenticate/register_contact_number.dart';
 import 'package:wear_agains/app/authenticate/register_otp.dart';
-import 'package:wear_agains/app/viewer/home.dart';
 import 'package:wear_agains/app/viewer/navigator.dart';
+import 'package:wear_agains/profile/edit_profile.dart';
 
 class Routes {
   static String loginScreen = '/login';
@@ -13,6 +13,7 @@ class Routes {
   static String registerScreen = '/register';
   static String registerContactNumberScreen = '/registerContactNumber';
   static String registerOTP = '/otp';
+  static String editProfile = '/editProfile';
 }
 
 final getPages = [
@@ -32,5 +33,9 @@ final getPages = [
   GetPage(
     name: Routes.registerOTP,
     page: () => const RegisterOTPPage(),
+  ),
+  GetPage(
+    name: Routes.editProfile,
+    page: () => const EditProfileScreen(),
   ),
 ];

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 import 'package:get/get.dart';
 import 'package:wear_agains/app/cart/view_cart.dart';
@@ -172,13 +171,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Row(
                     children: [
-                      Image.asset(Assets.wearagainsnotification),
+                      Image.asset(Assets.wearagainsnotification,
+                          color: Colors.black),
                       SizedBoxWidth.twentySizedBox,
                       GestureDetector(
                           onTap: () {
                             Get.to(const ViewCartScreen());
                           },
-                          child: Image.asset(Assets.wearagainscart))
+                          child: Image.asset(Assets.wearagainscart,
+                              color: Colors.black))
                     ],
                   ),
                 ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wear_agains/const/buttons.dart';
 
 import '../../const/screens.dart';
 
@@ -64,8 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
           },
           style: ElevatedButton.styleFrom(
               backgroundColor: ColorPalette.elevatedButtonColor,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10))),
+              shape: ButtonWidget.nextButton),
           child: TextData.loginText),
     );
   }

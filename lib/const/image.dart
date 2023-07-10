@@ -13,6 +13,8 @@ class Assets {
   static String wearagainsnotification = "${assetsPath}notify.png";
   static String wearagainscart = "${assetsPath}shopping_cart.png";
   static String caretRight = "${assetsPath}caretRight.png";
+  static String profileIcon = "${assetsPath}profile.png";
+  static String editProfile = "${assetsPath}pencil.png";
 
   static String shoesConverse = "${shoesPath}wearagains-converse.png";
   static String shoesZoom = "${shoesPath}wearagains-zoom.png";

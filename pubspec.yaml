@@ -40,6 +40,7 @@ dependencies:
   hideable_bottom_bar: ^0.0.1
   pinput: ^2.2.31
   iconly: ^1.0.1
+  flutter_staggered_grid_view: ^0.6.2
   
 
 dev_dependencies:
@@ -68,7 +69,6 @@ flutter:
     - assets/
     - assets/shoes/
     - assets/tshirts/
-    - assets/jackets/
     - assets/navigation/
     - assets/register/
   #   - images/a_dot_ham.jpeg

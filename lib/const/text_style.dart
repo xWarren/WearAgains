@@ -21,4 +21,11 @@ class TextStyleData {
       color: ColorPalette.textButtonColor);
   static const TextStyle welcomeStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
+  // Profile
+  static const TextStyle profileTextStyle =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static const TextStyle profileNameTextStyle =
+      TextStyle(fontSize: 20, fontWeight: FontWeight.w600);
+  static const TextStyle editProfileTextStyle =
+      TextStyle(fontSize: 15, fontWeight: FontWeight.w700);
 }
