@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:wear_agains/app/items/shoes_description.dart';
-import 'package:wear_agains/const/appbar.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:wear_agains/const/color.dart';
+import 'package:get/get.dart';
+import 'package:wear_agains/app/items/tshirts_description.dart';
 import 'package:wear_agains/const/data_builder.dart';
 
-class ShoesViewAllScreen extends StatefulWidget {
-  const ShoesViewAllScreen({super.key});
+import '../../const/appbar.dart';
+import '../../const/color.dart';
+
+class TShirtViewAllScreen extends StatefulWidget {
+  const TShirtViewAllScreen({super.key});
 
   @override
-  State<ShoesViewAllScreen> createState() => _ShoesViewAllScreenState();
+  State<TShirtViewAllScreen> createState() => _TShirtViewAllScreenState();
 }
 
-class _ShoesViewAllScreenState extends State<ShoesViewAllScreen> {
+class _TShirtViewAllScreenState extends State<TShirtViewAllScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBarWidget.shoes,
+        appBar: AppBarWidget.tshirt,
         body: MasonryGridView.builder(
-            itemCount: shoes.length,
+            itemCount: tshirts.length,
             crossAxisSpacing: 2,
             mainAxisSpacing: 14,
             gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
@@ -30,7 +31,7 @@ class _ShoesViewAllScreenState extends State<ShoesViewAllScreen> {
                   child: GestureDetector(
                     onTap: () {
                       Get.to(
-                        ShoesScreen(shoes: shoes[index]),
+                        TShirtsScreen(tshirts: tshirts[index]),
                         transition: Transition.fadeIn,
                       );
                     },
@@ -41,7 +42,7 @@ class _ShoesViewAllScreenState extends State<ShoesViewAllScreen> {
                                 side: const BorderSide(
                                     color: ColorPalette.elevatedButtonColor,
                                     width: 2))),
-                        child: Image.asset(shoes[index].shoesImage)),
+                        child: Image.asset(tshirts[index].tshirtsImage)),
                   ));
             }));
   }

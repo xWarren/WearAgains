@@ -115,8 +115,8 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Padding buildPasswordText() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20),
       child: Row(
         children: [TextData.passwordText],
       ),
@@ -149,8 +149,8 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Padding _buildEmailText() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20),
       child: Row(
         children: [TextData.emailText],
       ),

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 import 'package:flutter/material.dart';
 
 import '../../const/screens.dart';
@@ -48,7 +49,7 @@ class _CarouselScreenState extends State<CarouselScreen> {
 
   PageView _buildCarousel() {
     return PageView.builder(
-        itemCount: shoes.length,
+        itemCount: bannerdata.length,
         onPageChanged: (int page) {
           setState(() {
             _currentPageIndex = page;
@@ -58,15 +59,8 @@ class _CarouselScreenState extends State<CarouselScreen> {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Container(
-              decoration: ShapeDecoration(
-                  image: DecorationImage(
-                      image: AssetImage(shoes[index].shoesImage)),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10))),
-            ),
-          );
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 50),
+              child: bannerdata[index].bannerImage);
         });
   }
 
@@ -76,7 +70,7 @@ class _CarouselScreenState extends State<CarouselScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: List.generate(
-          shoes.length,
+          bannerdata.length,
           (index) => dot(index, context),
         ),
       ),

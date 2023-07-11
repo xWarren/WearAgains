@@ -2,11 +2,13 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wear_agains/app/authenticate/login.dart';
+import 'package:wear_agains/app/binding/shoes_binding.dart';
 
 import 'package:wear_agains/const/image.dart';
 import 'package:wear_agains/const/routes.dart';
 
-void main() {
+void main() async {
+  ShoesBinding().dependencies();
   runApp(const MyApp());
 }
 

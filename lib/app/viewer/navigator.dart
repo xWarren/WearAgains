@@ -82,11 +82,22 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
         elevation: 0,
         items: [
           BottomNavigationBarItem(
-              icon: Image.asset(Assets.navigationsHome), label: "Home"),
+              icon: Image.asset(Assets.navigationsHome,
+                  color:
+                      currentIndex == 0 ? null : Colors.grey.withOpacity(0.5)),
+              label: "Home"),
           BottomNavigationBarItem(
-              icon: Image.asset(Assets.navigationsChat), label: "Chat"),
+              icon: Image.asset(Assets.navigationsChat,
+                  color: currentIndex == 1
+                      ? ColorPalette.textButtonColor
+                      : Colors.grey.withOpacity(0.5)),
+              label: "Chat"),
           BottomNavigationBarItem(
-              icon: Image.asset(Assets.navigationsProfile), label: "Profile"),
+              icon: Image.asset(Assets.navigationsProfile,
+                  color: currentIndex == 2
+                      ? ColorPalette.textButtonColor
+                      : Colors.grey.withOpacity(0.5)),
+              label: "Profile"),
         ],
       ),
     );

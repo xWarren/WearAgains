@@ -28,4 +28,10 @@ class TextStyleData {
       TextStyle(fontSize: 20, fontWeight: FontWeight.w600);
   static const TextStyle editProfileTextStyle =
       TextStyle(fontSize: 15, fontWeight: FontWeight.w700);
+
+  //Chat
+  static const TextStyle chatNameStyle =
+      TextStyle(fontSize: 12, fontWeight: FontWeight.w700, color: Colors.black);
+  static const TextStyle chatStyle =
+      TextStyle(fontSize: 12, color: ColorPalette.chatColor);
 }

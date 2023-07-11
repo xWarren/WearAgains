@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wear_agains/app/cart/view_cart.dart';
 import 'package:wear_agains/app/items/shoes_description.dart';
+import 'package:wear_agains/app/items/tshirts_description.dart';
 import '../../const/data_builder.dart';
 import '../../const/screens.dart';
 import 'carousel.dart';
@@ -27,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(children: [
           Container(
               alignment: Alignment.center,
-              height: Get.height / 2.5,
+              height: Get.height / 3.5,
               child: const CarouselScreen()),
           SizedBoxHeight.tenSizedBox,
           Padding(
@@ -48,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Get.toNamed(Routes.shoesScreen);
                         },
                         child: const Text(
-                          "SEE ALL",
+                          "SEE ALL ",
                           style: TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.w400,
@@ -66,13 +67,14 @@ class _HomeScreenState extends State<HomeScreen> {
           SizedBox(
             height: Get.height / 5,
             child: ListView.builder(
-              itemCount: shoes.length,
+              itemCount: shoes.length - 3,
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
-                    Get.to(ShoesScreen(shoes: shoes[index]));
+                    Get.to(ShoesScreen(shoes: shoes[index]),
+                        transition: Transition.fadeIn);
                   },
                   child: Container(
                     width: Get.width / 2.5,
@@ -106,12 +108,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Row(
                     children: [
-                      const Text(
-                        "SEE ALL",
-                        style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w400,
-                            color: ColorPalette.textButtonColor),
+                      GestureDetector(
+                        onTap: () {
+                          Get.toNamed(Routes.tshirtsScreen);
+                        },
+                        child: const Text(
+                          "SEE ALL ",
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400,
+                              color: ColorPalette.textButtonColor),
+                        ),
                       ),
                       Image.asset(Assets.caretRight)
                     ],
@@ -124,23 +131,29 @@ class _HomeScreenState extends State<HomeScreen> {
           SizedBox(
             height: Get.height / 5,
             child: ListView.builder(
-              itemCount: tshirts.length,
+              itemCount: tshirts.length - 3,
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
               itemBuilder: (context, index) {
-                return Container(
-                  width: Get.width / 2.5,
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  margin: const EdgeInsets.only(left: 15),
-                  decoration: ShapeDecoration(
-                      shadows: const <BoxShadow>[
-                        BoxShadow(blurRadius: 5.0, offset: Offset(0, 5)),
-                      ],
-                      image: DecorationImage(
-                          image: AssetImage(tshirts[index].tshirtsImage)),
-                      shape: RoundedRectangleBorder(
-                          side: const BorderSide(color: Colors.black),
-                          borderRadius: BorderRadius.circular(15))),
+                return GestureDetector(
+                  onTap: () {
+                    Get.to(TShirtsScreen(tshirts: tshirts[index]),
+                        transition: Transition.fadeIn);
+                  },
+                  child: Container(
+                    width: Get.width / 2.5,
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    margin: const EdgeInsets.only(left: 15),
+                    decoration: ShapeDecoration(
+                        shadows: const <BoxShadow>[
+                          BoxShadow(blurRadius: 5.0, offset: Offset(0, 5)),
+                        ],
+                        image: DecorationImage(
+                            image: AssetImage(tshirts[index].tshirtsImage)),
+                        shape: RoundedRectangleBorder(
+                            side: const BorderSide(color: Colors.black),
+                            borderRadius: BorderRadius.circular(15))),
+                  ),
                 );
               },
             ),

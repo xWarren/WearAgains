@@ -14,32 +14,36 @@ class ViewCartScreen extends StatefulWidget {
 }
 
 class _ViewCartScreenState extends State<ViewCartScreen> {
-  final CartController controller = Get.find();
+  final ShoesController controller = Get.find();
   @override
   Widget build(BuildContext context) {
     return Obx(
       () => Scaffold(
         appBar: AppBarWidget.appBarOTP,
-        body: SizedBox(
-          height: 600,
-          child: ListView.builder(
-            itemCount: controller.shoes.length,
-            itemBuilder: (context, index) {
-              return CartProduct(
-                  cartController: controller,
-                  shoes: controller.shoes.keys.toList()[index],
-                  quantity: controller.shoes.values.toList()[index],
-                  index: index);
-            },
-          ),
-        ),
+        body: controller.shoes.length == 0
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : SizedBox(
+                height: 600,
+                child: ListView.builder(
+                  itemCount: controller.shoes.length,
+                  itemBuilder: (context, index) {
+                    return CartProduct(
+                        cartController: controller,
+                        shoes: controller.shoes.keys.toList()[index],
+                        quantity: controller.shoes.values.toList()[index],
+                        index: index);
+                  },
+                ),
+              ),
       ),
     );
   }
 }
 
 class CartProduct extends StatelessWidget {
-  final CartController cartController;
+  final ShoesController cartController;
   final ShoesData shoes;
   final int quantity;
   final int index;
@@ -55,7 +59,7 @@ class CartProduct extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.amber,
       body: Column(
-        children: [Text("HELLO"), Image.asset(shoes.shoesImage)],
+        children: [const Text("HELLO"), Image.asset(shoes.shoesImage)],
       ),
     );
   }

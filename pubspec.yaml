@@ -71,6 +71,8 @@ flutter:
     - assets/tshirts/
     - assets/navigation/
     - assets/register/
+    - assets/banner/
+    - assets/chat/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:wear_agains/const/screens.dart';
+import 'package:wear_agains/const/data_builder.dart';
 
 import '../../const/buttons.dart';
-import '../../const/data_builder.dart';
+import '../../const/screens.dart';
 import '../controller/cart_controller.dart';
 
-class ShoesScreen extends StatefulWidget {
-  final ShoesData shoes;
-  const ShoesScreen({required this.shoes, super.key});
+class TShirtsScreen extends StatefulWidget {
+  final TShirtsData tshirts;
+  const TShirtsScreen({required this.tshirts, super.key});
 
   @override
-  State<ShoesScreen> createState() => _ShoesScreenState();
+  State<TShirtsScreen> createState() => _TShirtsScreenState();
 }
 
-class _ShoesScreenState extends State<ShoesScreen> {
+class _TShirtsScreenState extends State<TShirtsScreen> {
   late ShoesController controller;
 
   @override
@@ -57,7 +57,7 @@ class _ShoesScreenState extends State<ShoesScreen> {
             expandedHeight: Get.height / 3.0,
             flexibleSpace: FlexibleSpaceBar(
               background: Image.asset(
-                widget.shoes.viewImage,
+                widget.tshirts.tshirtsImage,
                 fit: BoxFit.contain,
               ),
             ),
@@ -78,7 +78,7 @@ class _ShoesScreenState extends State<ShoesScreen> {
                         ),
                         SizedBoxWidth.fiveSizedBox,
                         Text(
-                          widget.shoes.sizeText,
+                          widget.tshirts.sizeText,
                           style: const TextStyle(
                               fontSize: 15, fontWeight: FontWeight.w600),
                         ),
@@ -97,7 +97,7 @@ class _ShoesScreenState extends State<ShoesScreen> {
                         ),
                         SizedBoxWidth.fiveSizedBox,
                         Text(
-                          widget.shoes.conditionText,
+                          widget.tshirts.conditionText,
                           style: const TextStyle(
                               fontSize: 15, fontWeight: FontWeight.w600),
                         ),
@@ -134,7 +134,7 @@ class _ShoesScreenState extends State<ShoesScreen> {
               width: Get.width / 1.0,
               child: ElevatedButton(
                   onPressed: () {
-                    controller.addShoesProduct(widget.shoes);
+                    controller.addTShirtsProduct(widget.tshirts);
                   },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: ColorPalette.elevatedButtonColor,
@@ -150,7 +150,7 @@ class _ShoesScreenState extends State<ShoesScreen> {
                               fontSize: 15, fontWeight: FontWeight.w600),
                         ),
                         Text(
-                          "₱${widget.shoes.priceText.toStringAsFixed(2)}",
+                          "₱${widget.tshirts.priceText.toStringAsFixed(2)}",
                           style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.w600),
                         )

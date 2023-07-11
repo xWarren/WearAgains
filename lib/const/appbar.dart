@@ -27,4 +27,10 @@ class AppBarWidget {
     title: const Text("Shoes", style: TextStyleData.appBarTitle),
     iconTheme: const IconThemeData(color: Colors.black),
   );
+  static AppBar tshirt = AppBar(
+    elevation: 0,
+    backgroundColor: ColorPalette.backgroundColor,
+    title: const Text("T Shirt", style: TextStyleData.appBarTitle),
+    iconTheme: const IconThemeData(color: Colors.black),
+  );
 }
