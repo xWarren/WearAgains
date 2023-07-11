@@ -4,7 +4,7 @@ import 'package:wear_agains/const/appbar.dart';
 import 'package:wear_agains/const/data_builder.dart';
 import 'package:get/get.dart';
 
-import '../controller/cart_controller.dart';
+import '../controller/tshirts_controller.dart';
 
 class ViewCartScreen extends StatefulWidget {
   const ViewCartScreen({super.key});
@@ -14,12 +14,14 @@ class ViewCartScreen extends StatefulWidget {
 }
 
 class _ViewCartScreenState extends State<ViewCartScreen> {
-  final ShoesController controller = Get.find();
+  final CartController controller = Get.find<CartController>();
   @override
   Widget build(BuildContext context) {
     return Obx(
       () => Scaffold(
-        appBar: AppBarWidget.appBarOTP,
+        appBar: controller.shoes.length == 0
+            ? AppBarWidget.appBarOTP
+            : AppBarWidget.appBarOTP,
         body: controller.shoes.length == 0
             ? const Center(
                 child: CircularProgressIndicator(),
@@ -43,7 +45,7 @@ class _ViewCartScreenState extends State<ViewCartScreen> {
 }
 
 class CartProduct extends StatelessWidget {
-  final ShoesController cartController;
+  final CartController cartController;
   final ShoesData shoes;
   final int quantity;
   final int index;

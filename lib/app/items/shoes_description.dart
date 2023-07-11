@@ -4,7 +4,7 @@ import 'package:wear_agains/const/screens.dart';
 
 import '../../const/buttons.dart';
 import '../../const/data_builder.dart';
-import '../controller/cart_controller.dart';
+import '../controller/tshirts_controller.dart';
 
 class ShoesScreen extends StatefulWidget {
   final ShoesData shoes;
@@ -15,12 +15,12 @@ class ShoesScreen extends StatefulWidget {
 }
 
 class _ShoesScreenState extends State<ShoesScreen> {
-  late ShoesController controller;
+  late CartController controller;
 
   @override
   void initState() {
     super.initState();
-    controller = Get.put(ShoesController());
+    controller = Get.put(CartController());
   }
 
   @override
@@ -134,7 +134,7 @@ class _ShoesScreenState extends State<ShoesScreen> {
               width: Get.width / 1.0,
               child: ElevatedButton(
                   onPressed: () {
-                    controller.addShoesProduct(widget.shoes);
+                    controller.addProduct(widget.shoes);
                   },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: ColorPalette.elevatedButtonColor,
