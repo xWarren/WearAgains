@@ -8,6 +8,7 @@ class ShoesData {
   final String sizeText;
   final String conditionText;
   final String authenticity;
+  final String category;
   final double priceText;
   bool isSelected;
 
@@ -18,6 +19,7 @@ class ShoesData {
       required this.sizeText,
       required this.conditionText,
       required this.authenticity,
+      required this.category,
       required this.priceText,
       this.isSelected = false});
 }
@@ -30,6 +32,7 @@ List<ShoesData> shoes = [
       sizeText: "EUR42",
       conditionText: "8/10",
       authenticity: "Authenticity not guaranteed",
+      category: "Shoes",
       priceText: 1500.00),
   ShoesData(
       shoesImage: Assets.shoesZoom,
@@ -38,6 +41,7 @@ List<ShoesData> shoes = [
       sizeText: "EUR45",
       conditionText: "9/10",
       authenticity: "Authenticity not guaranteed",
+      category: "Shoes",
       priceText: 1500.00),
   ShoesData(
       shoesImage: Assets.shoesYeezy,
@@ -46,55 +50,8 @@ List<ShoesData> shoes = [
       sizeText: "EUR42",
       conditionText: "8/10",
       authenticity: "Authenticity not guaranteed",
+      category: "Shoes",
       priceText: 1500.00),
-  ShoesData(
-      shoesImage: Assets.shoesConverse,
-      shoesName: "Nike X Converse Classic",
-      viewImage: Assets.converseCrop,
-      sizeText: "EUR42",
-      conditionText: "8/10",
-      authenticity: "Authenticity not guaranteed",
-      priceText: 1500.00),
-  ShoesData(
-      shoesImage: Assets.shoesZoom,
-      shoesName: "Nike Zoom 2k Trainers",
-      viewImage: Assets.zoomCrop,
-      sizeText: "EUR45",
-      conditionText: "9/10",
-      authenticity: "Authenticity not guaranteed",
-      priceText: 1500.00),
-  ShoesData(
-      shoesImage: Assets.shoesYeezy,
-      shoesName: "Yeezy 700",
-      viewImage: Assets.yeezyCrop,
-      sizeText: "EUR42",
-      conditionText: "8/10",
-      authenticity: "Authenticity not guaranteed",
-      priceText: 1500.00),
-  ShoesData(
-      shoesImage: Assets.shoesConverse,
-      shoesName: "Nike X Converse Classic",
-      viewImage: Assets.converseCrop,
-      sizeText: "EUR42",
-      conditionText: "8/10",
-      authenticity: "Authenticity not guaranteed",
-      priceText: 1500.00),
-  ShoesData(
-      shoesImage: Assets.shoesZoom,
-      shoesName: "Nike Zoom 2k Trainers",
-      viewImage: Assets.zoomCrop,
-      sizeText: "EUR45",
-      conditionText: "9/10",
-      authenticity: "Authenticity not guaranteed",
-      priceText: 1500.00),
-  ShoesData(
-      shoesImage: Assets.shoesYeezy,
-      shoesName: "Yeezy 700",
-      viewImage: Assets.yeezyCrop,
-      sizeText: "EUR42",
-      conditionText: "8/10",
-      authenticity: "Authenticity not guaranteed",
-      priceText: 1500.00)
 ];
 
 class TShirtsData {

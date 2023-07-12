@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:wear_agains/app/cart/view_cart.dart';
-import 'package:wear_agains/app/items/shoes_description.dart';
-import 'package:wear_agains/app/items/tshirts_description.dart';
 import '../../const/data_builder.dart';
 import '../../const/screens.dart';
 import 'carousel.dart';
@@ -67,14 +64,14 @@ class _HomeScreenState extends State<HomeScreen> {
           SizedBox(
             height: Get.height / 5,
             child: ListView.builder(
-              itemCount: shoes.length - 3,
+              itemCount: shoes.length,
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
-                    Get.to(ShoesScreen(shoes: shoes[index]),
-                        transition: Transition.fadeIn);
+                    // Get.to(ShoesViewscreen(shoes: shoes[index]),
+                    //     transition: Transition.fadeIn);
                   },
                   child: Container(
                     width: Get.width / 2.5,
@@ -137,8 +134,8 @@ class _HomeScreenState extends State<HomeScreen> {
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
-                    Get.to(TShirtsScreen(tshirts: tshirts[index]),
-                        transition: Transition.fadeIn);
+                    // Get.to(TShirtsScreen(tshirts: tshirts[index]),
+                    //     transition: Transition.fadeIn);
                   },
                   child: Container(
                     width: Get.width / 2.5,
@@ -194,7 +191,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBoxWidth.twentySizedBox,
                       GestureDetector(
                           onTap: () {
-                            Get.to(const ViewCartScreen());
+                            // Get.to(const CartProductScreen());
                           },
                           child: Image.asset(Assets.wearagainscart,
                               color: Colors.black))

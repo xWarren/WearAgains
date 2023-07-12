@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:wear_agains/const/data_builder.dart';
 import 'package:wear_agains/const/screens.dart';
 

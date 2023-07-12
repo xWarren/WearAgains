@@ -7,6 +7,7 @@ class Assets {
   static String registerPath = "assets/register/";
   static String bannerPath = "assets/banner/";
   static String chatPath = "assets/chat/";
+  static String emptyPath = "assets/empty/";
 
   static String wearagainslogo = "${assetsPath}wearagains-logo.png";
   static String wearagainsregister = "${assetsPath}wearagains-register.png";
@@ -45,4 +46,8 @@ class Assets {
   static String adminChat = "${chatPath}admin.png";
   static String addChat = "${chatPath}add.png";
   static String sendChat = "${chatPath}send.png";
+
+  static String emptyCart = "${emptyPath}empty_cart.png";
+  static String trashIcon = "${emptyPath}trash.png";
+  static String voucherIcon = "${emptyPath}voucher.png";
 }

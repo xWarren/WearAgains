@@ -4,11 +4,9 @@ import 'package:wear_agains/app/authenticate/register.dart';
 import 'package:wear_agains/app/authenticate/register_contact_number.dart';
 import 'package:wear_agains/app/authenticate/register_otp.dart';
 import 'package:wear_agains/app/products/shoes_view.dart';
-import 'package:wear_agains/app/products/tshirt_view.dart';
+// import 'package:wear_agains/app/products/tshirt_view.dart';
 import 'package:wear_agains/app/viewer/navigator.dart';
 import 'package:wear_agains/profile/edit_profile.dart';
-
-import '../app/binding/shoes_binding.dart';
 
 class Routes {
   static String loginScreen = '/login';
@@ -47,10 +45,9 @@ final getPages = [
   GetPage(
     name: Routes.shoesScreen,
     page: () => const ShoesViewAllScreen(),
-    binding: ShoesBinding(),
   ),
-  GetPage(
-    name: Routes.tshirtsScreen,
-    page: () => const TShirtViewAllScreen(),
-  ),
+  // GetPage(
+  //   name: Routes.tshirtsScreen,
+  //   page: () => const TShirtViewAllScreen(),
+  // ),
 ];

@@ -34,4 +34,19 @@ class TextStyleData {
       TextStyle(fontSize: 12, fontWeight: FontWeight.w700, color: Colors.black);
   static const TextStyle chatStyle =
       TextStyle(fontSize: 12, color: ColorPalette.chatColor);
+
+  //Cart
+  static const TextStyle totalStyle =
+      TextStyle(fontSize: 15, fontWeight: FontWeight.w700);
+  static const TextStyle buttonStyle =
+      TextStyle(fontSize: 15, fontWeight: FontWeight.w600);
+  static const TextStyle cartButtonStyle =
+      TextStyle(color: ColorPalette.textButtonColor, fontSize: 10);
+  static const TextStyle paymentMethodStyle = TextStyle(fontSize: 10);
+  static const TextStyle paymentMethod =
+      TextStyle(fontSize: 10, fontWeight: FontWeight.w600);
+  static const TextStyle dialog =
+      TextStyle(fontSize: 10, fontWeight: FontWeight.w600, color: Colors.black);
+  static const TextStyle wearAgainsVoucherStyle =
+      TextStyle(fontSize: 10, fontWeight: FontWeight.w600);
 }

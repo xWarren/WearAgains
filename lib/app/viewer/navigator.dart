@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:wear_agains/app/sample/sample_item.dart';
 import 'package:wear_agains/app/viewer/chat.dart';
 import '../../app/viewer/home.dart';
 import '../../app/viewer/profile.dart';
@@ -55,7 +56,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
   @override
   Widget build(BuildContext context) {
     List pages = [
-      HomeScreen(scrollController: _scrollController),
+      SampleItemScreen(scrollController: _scrollController),
       const ChatScreen(),
       const ProfileScreen(),
     ];

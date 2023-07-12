@@ -24,4 +24,34 @@ class TextData {
       Text("EDIT PROFILE", style: TextStyleData.editProfileTextStyle);
   static const Text updateText =
       Text("UPDATE", style: TextStyleData.editProfileTextStyle);
+
+  //Cart
+  static const Text totalText = Text(
+    "Total:",
+    style: TextStyleData.totalStyle,
+  );
+  static const Text cartButtonText = Text(
+    "Change",
+    style: TextStyleData.cartButtonStyle,
+  );
+  static const Text paymentMethodText = Text(
+    "Cash on Delivery",
+    style: TextStyleData.paymentMethodStyle,
+  );
+  static const Text paymentMethod = Text(
+    "Payment Method",
+    style: TextStyleData.paymentMethod,
+  );
+  static const Text selectVoucherText = Text(
+    "Select Vouchers",
+    style: TextStyleData.cartButtonStyle,
+  );
+  static const Text wearAgainsVoucherText = Text(
+    "WEARAGAINS Vouchers",
+    style: TextStyleData.wearAgainsVoucherStyle,
+  );
+  static const Text placeOrderText = Text(
+    "PLACE ORDER",
+    style: TextStyleData.buttonStyle,
+  );
 }

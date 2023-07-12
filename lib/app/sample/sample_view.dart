@@ -1,28 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:wear_agains/const/screens.dart';
+import 'package:wear_agains/app/sample/sample_cart.dart';
+import 'package:wear_agains/app/sample/sample_controller.dart';
+
+import 'package:wear_agains/const/data_builder.dart';
 
 import '../../const/buttons.dart';
-import '../../const/data_builder.dart';
-import '../controller/tshirts_controller.dart';
+import '../../const/screens.dart';
 
-class ShoesScreen extends StatefulWidget {
+class SampleView extends StatefulWidget {
   final ShoesData shoes;
-  const ShoesScreen({required this.shoes, super.key});
+  const SampleView({required this.shoes, super.key});
 
   @override
-  State<ShoesScreen> createState() => _ShoesScreenState();
+  State<SampleView> createState() => _SampleViewState();
 }
 
-class _ShoesScreenState extends State<ShoesScreen> {
-  late CartController controller;
-
-  @override
-  void initState() {
-    super.initState();
-    controller = Get.put(CartController());
-  }
-
+class _SampleViewState extends State<SampleView> {
+  SampleController shoesController = Get.put(SampleController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,9 +44,14 @@ class _ShoesScreenState extends State<ShoesScreen> {
             actions: [
               Padding(
                 padding: const EdgeInsets.all(8),
-                child: CircleAvatar(
-                    backgroundColor: ColorPalette.backgroundColor,
-                    child: Image.asset(Assets.cartBlackIcon)),
+                child: GestureDetector(
+                  onTap: () {
+                    Get.to(const SampleCart());
+                  },
+                  child: CircleAvatar(
+                      backgroundColor: ColorPalette.backgroundColor,
+                      child: Image.asset(Assets.cartBlackIcon)),
+                ),
               )
             ],
             expandedHeight: Get.height / 3.0,
@@ -134,7 +134,7 @@ class _ShoesScreenState extends State<ShoesScreen> {
               width: Get.width / 1.0,
               child: ElevatedButton(
                   onPressed: () {
-                    controller.addProduct(widget.shoes);
+                    shoesController.addSampleShoes(widget.shoes);
                   },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: ColorPalette.elevatedButtonColor,

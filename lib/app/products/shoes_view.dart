@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:wear_agains/app/items/shoes_description.dart';
+import 'package:wear_agains/app/sample/sample_view.dart';
 import 'package:wear_agains/const/appbar.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:wear_agains/const/color.dart';
@@ -30,7 +30,7 @@ class _ShoesViewAllScreenState extends State<ShoesViewAllScreen> {
                   child: GestureDetector(
                     onTap: () {
                       Get.to(
-                        ShoesScreen(shoes: shoes[index]),
+                        SampleView(shoes: shoes[index]),
                         transition: Transition.fadeIn,
                       );
                     },
