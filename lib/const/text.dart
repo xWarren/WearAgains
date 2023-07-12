@@ -52,6 +52,6 @@ class TextData {
   );
   static const Text placeOrderText = Text(
     "PLACE ORDER",
-    style: TextStyleData.buttonStyle,
+    style: TextStyleData.disableButtonStyle,
   );
 }

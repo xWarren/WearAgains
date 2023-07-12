@@ -10,4 +10,5 @@ class ColorPalette {
   static const Color otpColor = Color(0xFF7D7777);
   static const Color authenticityColor = Color(0xFFFF0000);
   static const Color chatColor = Color(0xFF3C3838);
+  static const Color disableButton = Color(0xFFE6E6E6);
 }

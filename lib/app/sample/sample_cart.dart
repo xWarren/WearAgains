@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wear_agains/app/sample/sample_controller.dart';
+import 'package:wear_agains/app/sample/success.dart';
 import 'package:wear_agains/const/appbar.dart';
 import 'package:wear_agains/const/data_builder.dart';
 import 'package:wear_agains/const/screens.dart';
@@ -190,28 +191,30 @@ class _SampleCartProductState extends State<SampleCartProduct> {
               ),
             ),
             SizedBoxHeight.tenSizedBox,
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Container(
-                height: Get.height / 15,
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                width: Get.width / 1.0,
-                child: ElevatedButton(
-                    onPressed: () {
-                      // shoesController.addSampleShoes(widget.shoes);
-                    },
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: ColorPalette.elevatedButtonColor,
-                        shape: ButtonWidget.nextButton),
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [TextData.placeOrderText],
-                      ),
-                    )),
-              ),
-            ),
+            widget.disableButton
+                ? Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Container(
+                      height: Get.height / 15,
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      width: Get.width / 1.0,
+                      child: ElevatedButton(
+                          onPressed: () {
+                            Get.to(const SuccessScreen());
+                          },
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: ColorPalette.elevatedButtonColor,
+                              shape: ButtonWidget.nextButton),
+                          child: const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [TextData.placeOrderText],
+                            ),
+                          )),
+                    ),
+                  )
+                : const Text(""),
           ],
         ),
       ),

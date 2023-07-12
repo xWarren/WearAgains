@@ -50,4 +50,5 @@ class Assets {
   static String emptyCart = "${emptyPath}empty_cart.png";
   static String trashIcon = "${emptyPath}trash.png";
   static String voucherIcon = "${emptyPath}voucher.png";
+  static String orderConfirmed = "${emptyPath}order_confirmed.gif";
 }

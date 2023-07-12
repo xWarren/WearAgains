@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wear_agains/app/sample/cart_screen.dart';
 import 'package:wear_agains/app/sample/sample_cart.dart';
 import 'package:wear_agains/app/sample/sample_controller.dart';
 
@@ -43,15 +44,12 @@ class _SampleViewState extends State<SampleView> {
             ),
             actions: [
               Padding(
-                padding: const EdgeInsets.all(8),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: GestureDetector(
-                  onTap: () {
-                    Get.to(const SampleCart());
-                  },
-                  child: CircleAvatar(
-                      backgroundColor: ColorPalette.backgroundColor,
-                      child: Image.asset(Assets.cartBlackIcon)),
-                ),
+                    onTap: () {
+                      Get.to(const SampleCart());
+                    },
+                    child: const CartViewScreen()),
               )
             ],
             expandedHeight: Get.height / 3.0,

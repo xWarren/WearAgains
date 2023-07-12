@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:wear_agains/app/sample/sample_item.dart';
 import 'package:wear_agains/app/viewer/chat.dart';
-import '../../app/viewer/home.dart';
 import '../../app/viewer/profile.dart';
 import '../../const/screens.dart';
 

@@ -40,6 +40,10 @@ class TextStyleData {
       TextStyle(fontSize: 15, fontWeight: FontWeight.w700);
   static const TextStyle buttonStyle =
       TextStyle(fontSize: 15, fontWeight: FontWeight.w600);
+  static const TextStyle disableButtonStyle = TextStyle(
+      fontSize: 15,
+      fontWeight: FontWeight.w600,
+      color: ColorPalette.disableButton);
   static const TextStyle cartButtonStyle =
       TextStyle(color: ColorPalette.textButtonColor, fontSize: 10);
   static const TextStyle paymentMethodStyle = TextStyle(fontSize: 10);
