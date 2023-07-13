@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wear_agains/app/authenticate/auth_controller.dart';
 import 'package:wear_agains/const/buttons.dart';
 import 'package:wear_agains/const/color.dart';
-import 'package:wear_agains/const/routes.dart';
 
 import '../../const/appbar.dart';
 import '../../const/image.dart';
@@ -16,6 +16,7 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  AuthController authController = Get.put(AuthController());
   final TextEditingController firstNameController = TextEditingController();
   final TextEditingController lastNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
@@ -30,205 +31,34 @@ class _RegisterPageState extends State<RegisterPage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(Assets.registerProfile),
-              ],
-            ),
+            _buildRegisterImage(),
             SizedBoxHeight.tenSizedBox,
-            const Row(
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                  child: Text(
-                    "First Name",
-                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 125, vertical: 10),
-                  child: Text(
-                    "Last Name",
-                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
-                  ),
-                ),
-              ],
+            Form(
+              key: authController.formKey,
+              child: Row(
+                children: [
+                  _buildFirstNameText(),
+                  _buildLastNameText(),
+                ],
+              ),
             ),
             Row(
               children: [
-                Flexible(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: TextFormField(
-                      controller: firstNameController,
-                      keyboardType: TextInputType.name,
-                      textInputAction: TextInputAction.next,
-                      decoration: InputDecoration(
-                        fillColor: ColorPalette.formFieldColor,
-                        filled: true,
-                        enabledBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                                color: ColorPalette.formFieldSideColor),
-                            borderRadius: BorderRadius.circular(10)),
-                        focusedBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                                color: ColorPalette.formFieldSideColor),
-                            borderRadius: BorderRadius.circular(10)),
-                      ),
-                    ),
-                  ),
-                ),
-                Flexible(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: TextFormField(
-                      controller: lastNameController,
-                      keyboardType: TextInputType.name,
-                      textInputAction: TextInputAction.next,
-                      decoration: InputDecoration(
-                        fillColor: ColorPalette.formFieldColor,
-                        filled: true,
-                        enabledBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                                color: ColorPalette.formFieldSideColor),
-                            borderRadius: BorderRadius.circular(10)),
-                        focusedBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                                color: ColorPalette.formFieldSideColor),
-                            borderRadius: BorderRadius.circular(10)),
-                      ),
-                    ),
-                  ),
-                ),
+                _buildFirstNameField(),
+                _buildLastNameField(),
               ],
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              child: Row(
-                children: [
-                  Text(
-                    "Email",
-                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
-                  ),
-                ],
-              ),
-            ),
+            _buildEmailText(),
             Row(children: [
-              Flexible(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: TextFormField(
-                    controller: emailController,
-                    keyboardType: TextInputType.emailAddress,
-                    textInputAction: TextInputAction.next,
-                    decoration: InputDecoration(
-                      fillColor: ColorPalette.formFieldColor,
-                      filled: true,
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
-                              color: ColorPalette.formFieldSideColor),
-                          borderRadius: BorderRadius.circular(10)),
-                      focusedBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
-                              color: ColorPalette.formFieldSideColor),
-                          borderRadius: BorderRadius.circular(10)),
-                    ),
-                  ),
-                ),
-              ),
+              _buildEmailField(),
             ]),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              child: Row(
-                children: [
-                  Text(
-                    "Password",
-                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
-                  ),
-                ],
-              ),
-            ),
+            _buildPasswordText(),
             Row(children: [
-              Flexible(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: TextFormField(
-                    controller: passwordController,
-                    keyboardType: TextInputType.visiblePassword,
-                    textInputAction: TextInputAction.next,
-                    obscureText: obscureText,
-                    decoration: InputDecoration(
-                      fillColor: ColorPalette.formFieldColor,
-                      filled: true,
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
-                              color: ColorPalette.formFieldSideColor),
-                          borderRadius: BorderRadius.circular(10)),
-                      focusedBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
-                              color: ColorPalette.formFieldSideColor),
-                          borderRadius: BorderRadius.circular(10)),
-                      suffixIcon: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            obscureText = !obscureText;
-                          });
-                        },
-                        child: Icon(obscureText
-                            ? Icons.visibility_off
-                            : Icons.visibility),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              _buildPasswordField(),
             ]),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              child: Row(
-                children: [
-                  Text(
-                    "Confirm Password",
-                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
-                  ),
-                ],
-              ),
-            ),
+            _buildConfirmPasswordText(),
             Row(children: [
-              Flexible(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: TextFormField(
-                    controller: confirmPasswordController,
-                    keyboardType: TextInputType.visiblePassword,
-                    textInputAction: TextInputAction.done,
-                    obscureText: obscureText,
-                    decoration: InputDecoration(
-                      fillColor: ColorPalette.formFieldColor,
-                      filled: true,
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
-                              color: ColorPalette.formFieldSideColor),
-                          borderRadius: BorderRadius.circular(10)),
-                      focusedBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
-                              color: ColorPalette.formFieldSideColor),
-                          borderRadius: BorderRadius.circular(10)),
-                      suffixIcon: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            obscureText = !obscureText;
-                          });
-                        },
-                        child: Icon(obscureText
-                            ? Icons.visibility_off
-                            : Icons.visibility),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              _buildConfirmPasswordField(),
             ]),
             SizedBoxHeight.fifteenSizedBox,
             SizedBox(
@@ -236,7 +66,12 @@ class _RegisterPageState extends State<RegisterPage> {
               width: Get.width / 2.0,
               child: ElevatedButton(
                   onPressed: () {
-                    Get.toNamed(Routes.registerContactNumberScreen);
+                    if (authController.formKey.currentState!.validate()) {
+                      authController.register(
+                          authController.emailController.text.trim(),
+                          authController.passwordController.text.trim());
+                      // // Get.toNamed(Routes.registerContactNumberScreen);
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: ColorPalette.elevatedButtonColor,
@@ -249,6 +84,222 @@ class _RegisterPageState extends State<RegisterPage> {
           ],
         ),
       ),
+    );
+  }
+
+  Flexible _buildConfirmPasswordField() {
+    return Flexible(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: TextFormField(
+          controller: authController.confirmPasswordController,
+          keyboardType: TextInputType.visiblePassword,
+          textInputAction: TextInputAction.done,
+          obscureText: obscureText,
+          decoration: InputDecoration(
+            fillColor: ColorPalette.formFieldColor,
+            filled: true,
+            enabledBorder: OutlineInputBorder(
+                borderSide:
+                    const BorderSide(color: ColorPalette.formFieldSideColor),
+                borderRadius: BorderRadius.circular(10)),
+            focusedBorder: OutlineInputBorder(
+                borderSide:
+                    const BorderSide(color: ColorPalette.formFieldSideColor),
+                borderRadius: BorderRadius.circular(10)),
+            suffixIcon: GestureDetector(
+              onTap: () {
+                setState(() {
+                  obscureText = !obscureText;
+                });
+              },
+              child:
+                  Icon(obscureText ? Icons.visibility_off : Icons.visibility),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Padding _buildConfirmPasswordText() {
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      child: Row(
+        children: [
+          Text(
+            "Confirm Password",
+            style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Flexible _buildPasswordField() {
+    return Flexible(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: TextFormField(
+          controller: authController.passwordController,
+          keyboardType: TextInputType.visiblePassword,
+          textInputAction: TextInputAction.next,
+          obscureText: obscureText,
+          decoration: InputDecoration(
+            fillColor: ColorPalette.formFieldColor,
+            filled: true,
+            enabledBorder: OutlineInputBorder(
+                borderSide:
+                    const BorderSide(color: ColorPalette.formFieldSideColor),
+                borderRadius: BorderRadius.circular(10)),
+            focusedBorder: OutlineInputBorder(
+                borderSide:
+                    const BorderSide(color: ColorPalette.formFieldSideColor),
+                borderRadius: BorderRadius.circular(10)),
+            suffixIcon: GestureDetector(
+              onTap: () {
+                setState(() {
+                  obscureText = !obscureText;
+                });
+              },
+              child:
+                  Icon(obscureText ? Icons.visibility_off : Icons.visibility),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Padding _buildPasswordText() {
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      child: Row(
+        children: [
+          Text(
+            "Password",
+            style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Flexible _buildEmailField() {
+    return Flexible(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: TextFormField(
+          controller: authController.emailController,
+          keyboardType: TextInputType.emailAddress,
+          textInputAction: TextInputAction.next,
+          decoration: InputDecoration(
+            fillColor: ColorPalette.formFieldColor,
+            filled: true,
+            enabledBorder: OutlineInputBorder(
+                borderSide:
+                    const BorderSide(color: ColorPalette.formFieldSideColor),
+                borderRadius: BorderRadius.circular(10)),
+            focusedBorder: OutlineInputBorder(
+                borderSide:
+                    const BorderSide(color: ColorPalette.formFieldSideColor),
+                borderRadius: BorderRadius.circular(10)),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Padding _buildEmailText() {
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      child: Row(
+        children: [
+          Text(
+            "Email",
+            style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Flexible _buildLastNameField() {
+    return Flexible(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: TextFormField(
+          controller: authController.lastNameController,
+          keyboardType: TextInputType.name,
+          textInputAction: TextInputAction.next,
+          decoration: InputDecoration(
+            fillColor: ColorPalette.formFieldColor,
+            filled: true,
+            enabledBorder: OutlineInputBorder(
+                borderSide:
+                    const BorderSide(color: ColorPalette.formFieldSideColor),
+                borderRadius: BorderRadius.circular(10)),
+            focusedBorder: OutlineInputBorder(
+                borderSide:
+                    const BorderSide(color: ColorPalette.formFieldSideColor),
+                borderRadius: BorderRadius.circular(10)),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Flexible _buildFirstNameField() {
+    return Flexible(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: TextFormField(
+          controller: authController.firstNameController,
+          keyboardType: TextInputType.name,
+          textInputAction: TextInputAction.next,
+          decoration: InputDecoration(
+            fillColor: ColorPalette.formFieldColor,
+            filled: true,
+            enabledBorder: OutlineInputBorder(
+                borderSide:
+                    const BorderSide(color: ColorPalette.formFieldSideColor),
+                borderRadius: BorderRadius.circular(10)),
+            focusedBorder: OutlineInputBorder(
+                borderSide:
+                    const BorderSide(color: ColorPalette.formFieldSideColor),
+                borderRadius: BorderRadius.circular(10)),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Padding _buildLastNameText() {
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 125, vertical: 10),
+      child: Text(
+        "Last Name",
+        style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+      ),
+    );
+  }
+
+  Padding _buildFirstNameText() {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      child: Text(
+        "First Name",
+        style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+      ),
+    );
+  }
+
+  Row _buildRegisterImage() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Image.asset(Assets.registerProfile),
+      ],
     );
   }
 }

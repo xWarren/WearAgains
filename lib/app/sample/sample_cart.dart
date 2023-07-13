@@ -19,6 +19,9 @@ class _SampleCartState extends State<SampleCart> {
   SampleController shoesController = Get.find();
   TabController? tabController;
   bool disableButton = false;
+  bool mop = false;
+  String cashondelivery = "Cash on Delivery";
+  String gcash = "G Cash";
   @override
   Widget build(BuildContext context) {
     return Obx(
@@ -57,6 +60,9 @@ class _SampleCartState extends State<SampleCart> {
                     quantity: shoesController.shoes.values.toList()[index],
                     shoes: shoesController.shoes.keys.toList()[index],
                     disableButton: disableButton,
+                    mop: mop,
+                    gcash: gcash,
+                    cashondelivery: cashondelivery,
                   );
                 })),
         ),
@@ -83,13 +89,13 @@ class _SampleCartState extends State<SampleCart> {
                         topLeft: Radius.circular(5),
                         topRight: Radius.circular(5))),
                 indicatorSize: TabBarIndicatorSize.label,
-                tabs: List<Widget>.generate(
-                    shoesController.shoes.length,
-                    (index) => CartTab(
-                          controller: shoesController,
-                          shoes:
-                              shoesController.shoes.value?.keys.toList()[index],
-                        )))));
+                tabs: List<Widget>.generate(shoesController.shoes.length,
+                    (index) {
+                  return CartTab(
+                    controller: shoesController,
+                    shoes: shoesController.shoes.value?.keys.toList()[index],
+                  );
+                }))));
   }
 }
 
@@ -99,14 +105,19 @@ class SampleCartProduct extends StatefulWidget {
   final ShoesData shoes;
   final int quantity;
   final int index;
-
+  late bool mop;
   late bool disableButton;
+  final String gcash;
+  final String cashondelivery;
   SampleCartProduct(
       {required this.controller,
       required this.shoes,
       required this.quantity,
       required this.index,
       required this.disableButton,
+      required this.mop,
+      required this.gcash,
+      required this.cashondelivery,
       super.key});
 
   @override
@@ -155,7 +166,10 @@ class _SampleCartProductState extends State<SampleCartProduct> {
                   TextData.paymentMethod,
                   Row(
                     children: [
-                      TextData.paymentMethodText,
+                      Text(
+                        widget.mop ? widget.gcash : widget.cashondelivery,
+                        style: TextStyleData.paymentMethodStyle,
+                      ),
                       SizedBoxWidth.fiveSizedBox,
                       GestureDetector(
                           onTap: () {
@@ -183,7 +197,7 @@ class _SampleCartProductState extends State<SampleCartProduct> {
                   TextData.totalText,
                   Text(
                     widget.disableButton
-                        ? "₱${widget.shoes.priceText.toStringAsFixed(2)}"
+                        ? "₱${widget.controller.total}"
                         : "₱0.00",
                     style: TextStyleData.totalStyle,
                   ),
@@ -243,12 +257,18 @@ class _SampleCartProductState extends State<SampleCartProduct> {
         ListTile(
             title: const Text("Cash on Delivery"),
             onTap: () {
-              Get.back();
+              setState(() {
+                widget.mop = false;
+                Get.back();
+              });
             }),
         ListTile(
             title: const Text("G Cash"),
             onTap: () {
-              Get.back();
+              setState(() {
+                widget.mop = true;
+                Get.back();
+              });
             }),
       ],
     );
@@ -415,10 +435,7 @@ class _CartTabState extends State<CartTab> {
   @override
   Widget build(BuildContext context) {
     return Row(children: [
-      Tab(
-          text: widget.shoes.category == "Shoes"
-              ? widget.shoes.category
-              : widget.shoes.shoesName),
+      Tab(text: widget.shoes.category),
     ]);
   }
 }

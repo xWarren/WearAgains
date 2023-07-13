@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wear_agains/app/sample/cart_screen.dart';
-import 'package:wear_agains/app/sample/sample_cart.dart';
 
 import 'package:wear_agains/app/sample/sample_controller.dart';
 import 'package:wear_agains/app/sample/sample_view.dart';
@@ -48,29 +47,31 @@ class _SampleItemScreenState extends State<SampleItemScreen> {
     return SizedBox(
       height: Get.height / 5,
       child: ListView.builder(
-        itemCount: tshirts.length - 6,
-        scrollDirection: Axis.horizontal,
-        physics: const BouncingScrollPhysics(),
-        itemBuilder: (context, index) {
-          return GestureDetector(
-            onTap: () {
-              Get.to(SampleView(shoes: shoes[index]),
-                  transition: Transition.fadeIn);
-            },
-            child: Container(
-              width: Get.width / 3,
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              margin: const EdgeInsets.only(left: 15),
-              decoration: ShapeDecoration(
-                  image: DecorationImage(
-                      image: AssetImage(tshirts[index].tshirtsImage)),
-                  shape: RoundedRectangleBorder(
-                      side: const BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(15))),
-            ),
-          );
-        },
-      ),
+          itemCount: shoes.length,
+          scrollDirection: Axis.horizontal,
+          physics: const BouncingScrollPhysics(),
+          itemBuilder: (context, index) {
+            if (shoes[index].category == "T-Shirts") {
+              return GestureDetector(
+                onTap: () {
+                  Get.to(SampleView(shoes: shoes[index]),
+                      transition: Transition.fadeIn);
+                },
+                child: Container(
+                  width: Get.width / 3,
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  margin: const EdgeInsets.only(left: 15),
+                  decoration: ShapeDecoration(
+                      image: DecorationImage(
+                          image: AssetImage(tshirts[index].tshirtsImage)),
+                      shape: RoundedRectangleBorder(
+                          side: const BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.circular(15))),
+                ),
+              );
+            }
+            return SizedBox.shrink();
+          }),
     );
   }
 
@@ -153,32 +154,33 @@ class _SampleItemScreenState extends State<SampleItemScreen> {
 
   SizedBox _buildShoesData() {
     return SizedBox(
-      height: Get.height / 5,
-      child: ListView.builder(
-        itemCount: shoes.length,
-        scrollDirection: Axis.horizontal,
-        physics: const BouncingScrollPhysics(),
-        itemBuilder: (context, index) {
-          return GestureDetector(
-            onTap: () {
-              Get.to(SampleView(shoes: shoes[index]),
-                  transition: Transition.fadeIn);
-            },
-            child: Container(
-              width: Get.width / 3,
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              margin: const EdgeInsets.only(left: 15),
-              decoration: ShapeDecoration(
-                  image: DecorationImage(
-                      image: AssetImage(shoes[index].shoesImage)),
-                  shape: RoundedRectangleBorder(
-                      side: const BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(15))),
-            ),
-          );
-        },
-      ),
-    );
+        height: Get.height / 5,
+        child: ListView.builder(
+            itemCount: shoes.length,
+            scrollDirection: Axis.horizontal,
+            physics: const BouncingScrollPhysics(),
+            itemBuilder: (context, index) {
+              if (shoes[index].category == "Shoes") {
+                return GestureDetector(
+                  onTap: () {
+                    Get.to(SampleView(shoes: shoes[index]),
+                        transition: Transition.fadeIn);
+                  },
+                  child: Container(
+                    width: Get.width / 3,
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    margin: const EdgeInsets.only(left: 15),
+                    decoration: ShapeDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(shoes[index].shoesImage)),
+                        shape: RoundedRectangleBorder(
+                            side: const BorderSide(color: Colors.black),
+                            borderRadius: BorderRadius.circular(15))),
+                  ),
+                );
+              }
+              return const SizedBox.shrink();
+            }));
   }
 
   AppBar _buildAppBar() {

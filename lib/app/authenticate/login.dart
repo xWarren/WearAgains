@@ -1,8 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wear_agains/const/buttons.dart';
 
 import '../../const/screens.dart';
+import 'auth_controller.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -14,8 +17,9 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-
+  AuthController authController = Get.put(AuthController());
   bool obscureText = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,8 +36,24 @@ class _LoginScreenState extends State<LoginScreen> {
           buildPasswordText(),
           _buildPasswordField(),
           _buildForgotPasswordText(),
-          SizedBoxHeight.fiftySizedBox,
+          SizedBoxHeight.twentySizedBox,
           _buildLoginButton(),
+          SizedBoxHeight.twentySizedBox,
+          const Text(
+            "Sign in with",
+            style: TextStyleData.haveAccountStyle,
+          ),
+          ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: ColorPalette.backgroundColor),
+              onPressed: () {
+                authController.signInWithGoogle();
+              },
+              child: Image.asset(
+                Assets.googleIcon,
+                width: 20,
+                height: 20,
+              )),
           SizedBoxHeight.twentySizedBox,
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20),
@@ -60,13 +80,16 @@ class _LoginScreenState extends State<LoginScreen> {
       width: Get.width / 2,
       height: Get.height / 15,
       child: ElevatedButton(
-          onPressed: () {
-            Get.toNamed(Routes.navScreen);
-          },
-          style: ElevatedButton.styleFrom(
-              backgroundColor: ColorPalette.elevatedButtonColor,
-              shape: ButtonWidget.nextButton),
-          child: TextData.loginText),
+        onPressed: () {
+          authController.login(
+              emailController.text.trim(), passwordController.text.trim());
+          // Get.toNamed(Routes.navScreen);
+        },
+        style: ElevatedButton.styleFrom(
+            backgroundColor: ColorPalette.elevatedButtonColor,
+            shape: ButtonWidget.nextButton),
+        child: TextData.loginText,
+      ),
     );
   }
 
@@ -161,7 +184,11 @@ class _LoginScreenState extends State<LoginScreen> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.asset(Assets.wearagainslogin),
+        Image.asset(
+          Assets.wearagainslogin,
+          width: 250,
+          height: 150,
+        ),
       ],
     );
   }

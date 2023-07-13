@@ -1,8 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wear_agains/const/firebase_const.dart';
 import 'package:wear_agains/const/screens.dart';
 
 import '../../const/buttons.dart';
+import '../authenticate/user_class.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -12,6 +16,22 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  UserClass loggedInUser = UserClass();
+  final currentUser = FirebaseAuth.instance;
+  User? user = FirebaseAuth.instance.currentUser;
+  @override
+  void initState() {
+    FirebaseFirestore.instance
+        .collection("users")
+        .doc(user!.uid)
+        .get()
+        .then((value) {
+      loggedInUser = UserClass.fromMap(value.data());
+      setState(() {});
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,9 +42,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextData.profileFirstNameText,
+            Text(loggedInUser.firstName.toString(),
+                style: TextStyleData.profileNameTextStyle),
             SizedBoxWidth.fiveSizedBox,
-            TextData.profileLastNameText
+            Text(loggedInUser.lastName.toString(),
+                style: TextStyleData.profileNameTextStyle),
           ],
         ),
         const SizedBox(height: 250),
@@ -35,14 +57,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
               width: Get.width / 2,
               height: Get.height / 15,
               child: ElevatedButton(
-                onPressed: () {
-                  Get.toNamed(Routes.editProfile);
-                },
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: ColorPalette.elevatedButtonColor,
-                    shape: ButtonWidget.nextButton),
-                child: TextData.editProfileText,
-              ),
+                  onPressed: () {
+                    authController.signOut();
+                    // Get.toNamed(Routes.editProfile);
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: ColorPalette.elevatedButtonColor,
+                      shape: ButtonWidget.nextButton),
+                  child: Text("LOGOUT",
+                      style: TextStyleData.editProfileTextStyle)),
             ),
           ],
         ),

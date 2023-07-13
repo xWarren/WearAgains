@@ -46,6 +46,7 @@ class Assets {
   static String adminChat = "${chatPath}admin.png";
   static String addChat = "${chatPath}add.png";
   static String sendChat = "${chatPath}send.png";
+  static String googleIcon = "${chatPath}google.png";
 
   static String emptyCart = "${emptyPath}empty_cart.png";
   static String trashIcon = "${emptyPath}trash.png";

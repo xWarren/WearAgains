@@ -1,8 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wear_agains/const/appbar.dart';
 import 'package:wear_agains/const/screens.dart';
 
+import '../app/authenticate/user_class.dart';
 import '../const/buttons.dart';
 
 class EditProfileScreen extends StatefulWidget {
@@ -13,8 +16,23 @@ class EditProfileScreen extends StatefulWidget {
 }
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
-  final TextEditingController firstNameController =
-      TextEditingController(text: "Warren");
+  UserClass loggedInUser = UserClass();
+  final currentUser = FirebaseAuth.instance;
+  User? user = FirebaseAuth.instance.currentUser;
+  @override
+  void initState() {
+    FirebaseFirestore.instance
+        .collection("users")
+        .doc(user!.uid)
+        .get()
+        .then((value) {
+      loggedInUser = UserClass.fromMap(value.data());
+      setState(() {});
+    });
+    super.initState();
+  }
+
+  final TextEditingController firstNameController = TextEditingController();
   final TextEditingController lastNameController =
       TextEditingController(text: "Virgines");
   final TextEditingController addressController = TextEditingController(
@@ -124,6 +142,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             decoration: InputDecoration(
               filled: true,
               fillColor: Colors.grey.withOpacity(0.2),
+              label: Text(loggedInUser.firstName.toString()),
               focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.grey.withOpacity(0.5))),
               enabledBorder: OutlineInputBorder(

@@ -8,8 +8,8 @@ class SizedBoxHeight {
   static SizedBox twentyfiveSizedBox = const SizedBox(height: 25);
   static SizedBox thirtySizedBox = const SizedBox(height: 30);
   static SizedBox thirtyfiveSizedBox = const SizedBox(height: 35);
-  static SizedBox fourtySizedBox = const SizedBox(height: 40);
-  static SizedBox fourtyfiveSizedBox = const SizedBox(height: 45);
+  static SizedBox fortySizedBox = const SizedBox(height: 40);
+  static SizedBox fortyfiveSizedBox = const SizedBox(height: 45);
   static SizedBox fiftySizedBox = const SizedBox(height: 50);
 }
 
@@ -21,7 +21,7 @@ class SizedBoxWidth {
   static SizedBox twentyfiveSizedBox = const SizedBox(width: 25);
   static SizedBox thirtySizedBox = const SizedBox(width: 30);
   static SizedBox thirtyfiveSizedBox = const SizedBox(width: 35);
-  static SizedBox fourtySizedBox = const SizedBox(width: 40);
-  static SizedBox fourtyfiveSizedBox = const SizedBox(width: 45);
+  static SizedBox fortySizedBox = const SizedBox(width: 40);
+  static SizedBox fortyfiveSizedBox = const SizedBox(width: 45);
   static SizedBox fiftySizedBox = const SizedBox(width: 50);
 }

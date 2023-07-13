@@ -6,7 +6,14 @@ import 'package:wear_agains/app/authenticate/login.dart';
 import 'package:wear_agains/const/image.dart';
 import 'package:wear_agains/const/routes.dart';
 
+import 'app/authenticate/auth_controller.dart';
+import 'const/firebase_const.dart';
+
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await firebaseInitialization.then((value) {
+    Get.put(AuthController());
+  });
   runApp(const MyApp());
 }
 

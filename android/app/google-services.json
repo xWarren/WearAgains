@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1020647836209",
+    "project_id": "wear-agains",
+    "storage_bucket": "wear-agains.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1020647836209:android:7ef450c8e891a615646310",
+        "android_client_info": {
+          "package_name": "com.getx.wear_agains"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1020647836209-9sfjece9fhu86211r97of17slq3ht50n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIOu7sgoo07EMXDL9NgPcF_urm9qUcP_8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1020647836209-1il7htl8crmenvpniu4mehia0qnoqf9t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:wear_agains/const/color.dart';
 import 'package:wear_agains/const/text_style.dart';
 
+import '../app/authenticate/auth_controller.dart';
+
 class AppBarWidget {
+  AuthController authController = Get.put(AuthController());
   static AppBar appBarRegister = AppBar(
     elevation: 0,
     backgroundColor: ColorPalette.backgroundColor,
     title: const Text("Register", style: TextStyleData.appBarTitle),
     iconTheme: const IconThemeData(color: Colors.black),
+    leading: GestureDetector(
+      onTap: () {
+        Get.reloadAll();
+      },
+      child: const Icon(Icons.exit_to_app_sharp),
+    ),
   );
   static AppBar appBarOTP = AppBar(
     elevation: 0,

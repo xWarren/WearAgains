@@ -35,4 +35,19 @@ class SampleController extends GetxController {
   }
 
   get shoes => _sampleshoes;
+
+  get productSubtotal => _sampleshoes.entries
+      .map((shoes) => shoes.key.priceText * shoes.value)
+      .toList();
+
+  get total {
+    final shoesList = _sampleshoes.entries
+        .map((shoes) => shoes.key.priceText * shoes.value)
+        .toList();
+    return shoesList.isEmpty
+        ? 0
+        : shoesList
+            .reduce((value, element) => value + element)
+            .toStringAsFixed(2);
+  }
 }

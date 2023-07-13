@@ -52,6 +52,33 @@ List<ShoesData> shoes = [
       authenticity: "Authenticity not guaranteed",
       category: "Shoes",
       priceText: 1500.00),
+  ShoesData(
+      shoesImage: Assets.tshirtsBench,
+      shoesName: "Bench T-Shirt",
+      viewImage: Assets.tshirtsBench,
+      sizeText: "Extra Large",
+      conditionText: "8/10",
+      category: "T-Shirts",
+      authenticity: "Authenticity not guaranteed",
+      priceText: 120.00),
+  ShoesData(
+      shoesImage: Assets.tshirtsFervent,
+      shoesName: "Fervent T-Shirt",
+      viewImage: Assets.tshirtsFervent,
+      sizeText: "Medium",
+      conditionText: "9/10",
+      category: "T-Shirts",
+      authenticity: "Authenticity not guaranteed",
+      priceText: 100.00),
+  ShoesData(
+      shoesImage: Assets.tshirtsGiordano,
+      shoesName: "Giordano T-Shirt",
+      viewImage: Assets.tshirtsGiordano,
+      authenticity: "Authenticity not guaranteed",
+      sizeText: "Medium",
+      conditionText: "8/10",
+      category: "T-Shirts",
+      priceText: 150.00),
 ];
 
 class TShirtsData {

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wear_agains/app/sample/sample_controller.dart';
+import 'package:wear_agains/const/data_builder.dart';
 
 import '../../const/buttons.dart';
 import '../../const/screens.dart';
@@ -13,6 +15,7 @@ class SuccessScreen extends StatefulWidget {
 }
 
 class _SuccessScreenState extends State<SuccessScreen> {
+  final SampleController sampleController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,6 +49,7 @@ class _SuccessScreenState extends State<SuccessScreen> {
               child: ElevatedButton(
                   onPressed: () {
                     setState(() {
+                      Get.delete<SampleController>();
                       Get.to(const BottomNavScreen());
                     });
                   },
