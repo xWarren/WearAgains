@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wear_agains/const/buttons.dart';
@@ -19,6 +17,8 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController passwordController = TextEditingController();
   AuthController authController = Get.put(AuthController());
   bool obscureText = true;
+  int emailLength = 0;
+  int passwordLength = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -81,8 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
       height: Get.height / 15,
       child: ElevatedButton(
         onPressed: () {
-          authController.login(
-              emailController.text.trim(), passwordController.text.trim());
+          authController.login(emailController.text, passwordController.text);
           // Get.toNamed(Routes.navScreen);
         },
         style: ElevatedButton.styleFrom(
@@ -153,6 +152,26 @@ class _LoginScreenState extends State<LoginScreen> {
         controller: emailController,
         keyboardType: TextInputType.emailAddress,
         textInputAction: TextInputAction.next,
+        autofocus: false,
+        onChanged: (text) {
+          setState(() {
+            emailLength = text.length;
+          });
+        },
+        validator: (value) {
+          if (value!.isEmpty) {
+            return ("Please enter your Email");
+          }
+          // register expression for email validation
+          if (!RegExp("^[a-zA-Z0-9+_.-]+@[gmail]+[.]+[c-o-m]")
+              .hasMatch(value)) {
+            return ("Please Enter a valid email");
+          }
+          return null;
+        },
+        onSaved: (value) {
+          emailController.text = value!;
+        },
         decoration: InputDecoration(
           fillColor: ColorPalette.formFieldColor,
           filled: true,

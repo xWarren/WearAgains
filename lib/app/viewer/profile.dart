@@ -2,10 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:wear_agains/const/firebase_const.dart';
 import 'package:wear_agains/const/screens.dart';
 
 import '../../const/buttons.dart';
+import '../../const/firebase_const.dart';
 import '../authenticate/user_class.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -42,14 +42,40 @@ class _ProfileScreenState extends State<ProfileScreen> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(loggedInUser.firstName.toString(),
+            Text(
+                loggedInUser.firstName == null
+                    ? ""
+                    : loggedInUser.firstName.toString(),
                 style: TextStyleData.profileNameTextStyle),
             SizedBoxWidth.fiveSizedBox,
-            Text(loggedInUser.lastName.toString(),
+            Text(
+                loggedInUser.lastName == null
+                    ? ""
+                    : loggedInUser.lastName.toString(),
                 style: TextStyleData.profileNameTextStyle),
           ],
         ),
         const SizedBox(height: 250),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: Get.width / 2,
+              height: Get.height / 15,
+              child: ElevatedButton(
+                  onPressed: () {
+                    // authController.signOut();
+                    Get.toNamed(Routes.editProfile);
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: ColorPalette.elevatedButtonColor,
+                      shape: ButtonWidget.nextButton),
+                  child: const Text("Edit Profile",
+                      style: TextStyleData.editProfileTextStyle)),
+            ),
+          ],
+        ),
+        const SizedBox(height: 50),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -64,11 +90,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   style: ElevatedButton.styleFrom(
                       backgroundColor: ColorPalette.elevatedButtonColor,
                       shape: ButtonWidget.nextButton),
-                  child: Text("LOGOUT",
+                  child: const Text("LOGOUT",
                       style: TextStyleData.editProfileTextStyle)),
             ),
           ],
-        ),
+        )
       ]),
     );
   }

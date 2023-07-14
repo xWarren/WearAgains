@@ -285,7 +285,7 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   Padding _buildFirstNameText() {
-    return Padding(
+    return const Padding(
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       child: Text(
         "First Name",
@@ -298,7 +298,11 @@ class _RegisterPageState extends State<RegisterPage> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.asset(Assets.registerProfile),
+        Image.asset(
+          Assets.registerProfile,
+          width: 250,
+          height: 150,
+        ),
       ],
     );
   }

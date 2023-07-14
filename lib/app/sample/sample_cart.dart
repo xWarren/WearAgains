@@ -248,12 +248,12 @@ class _SampleCartProductState extends State<SampleCartProduct> {
               width: 70,
               margin: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                  color: Colors.blue.shade100,
+                  color: Colors.black38,
                   borderRadius: BorderRadius.circular(20)),
             )
           ],
         ),
-        const ListTile(title: Text("SELECT PAYMENT METHOD:")),
+        const ListTile(title: Text("Select Payment Method")),
         ListTile(
             title: const Text("Cash on Delivery"),
             onTap: () {
@@ -415,6 +415,7 @@ class _SampleCartProductState extends State<SampleCartProduct> {
         onChanged: (value) {
           setState(() {
             widget.disableButton = !widget.disableButton;
+            widget.controller.total;
           });
         },
       ),

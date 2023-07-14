@@ -15,12 +15,12 @@ class AuthController extends GetxController {
   final _auth = FirebaseAuth.instance;
   final formKey = GlobalKey<FormState>();
   late Rx<GoogleSignInAccount?> googleSignInAccount;
-  final TextEditingController firstNameController = TextEditingController();
-  final TextEditingController lastNameController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController =
-      TextEditingController();
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
+  String imageLink = "https://ibb.co/CwdRDTf";
 
   @override
   void onReady() {
@@ -111,19 +111,18 @@ class AuthController extends GetxController {
     userClass.uid = user.uid;
     userClass.firstName = authController.firstNameController.text.toString();
     userClass.lastName = authController.lastNameController.text.toString();
+    userClass.address = "";
+    userClass.phoneNumber = "";
+    userClass.imageLink = authController.imageLink;
 
     await firebaseFirestore
         .collection("users")
         .doc(user.uid)
         .set(userClass.toMap());
     Get.snackbar(
-      "About Login",
-      "Login Message",
+      "Message:",
+      "Your account has been registered!",
       snackPosition: SnackPosition.TOP,
-      titleText: const Text(
-        "Login failed",
-        style: TextStyle(fontSize: 15),
-      ),
     );
     Get.to(const BottomNavScreen());
   }
@@ -134,11 +133,11 @@ class AuthController extends GetxController {
       // ignore: empty_catches
     } on FirebaseAuthException catch (e) {
       Get.snackbar(
-        "About Login",
-        "Login Message",
+        "Message:",
+        e.message.toString(),
         snackPosition: SnackPosition.TOP,
         titleText: const Text(
-          "Login failed",
+          "Message:",
           style: TextStyle(fontSize: 15),
         ),
         messageText: Text(

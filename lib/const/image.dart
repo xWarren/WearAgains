@@ -18,6 +18,9 @@ class Assets {
   static String caretRight = "${assetsPath}caretRight.png";
   static String profileIcon = "${assetsPath}profile.png";
   static String editProfile = "${assetsPath}pencil.png";
+  static String profileTrashIcon = "${assetsPath}trash.png";
+  static String profileGalleryIcon = "${assetsPath}gallery.png";
+  static String profileCameraIcon = "${assetsPath}camera.png";
 
   static String shoesConverse = "${shoesPath}wearagains-converse.png";
   static String shoesZoom = "${shoesPath}wearagains-zoom.png";

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wear_agains/app/sample/sample_controller.dart';
-import 'package:wear_agains/const/data_builder.dart';
 
 import '../../const/buttons.dart';
 import '../../const/screens.dart';

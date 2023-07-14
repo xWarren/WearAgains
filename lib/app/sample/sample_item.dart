@@ -70,7 +70,7 @@ class _SampleItemScreenState extends State<SampleItemScreen> {
                 ),
               );
             }
-            return SizedBox.shrink();
+            return const SizedBox.shrink();
           }),
     );
   }
